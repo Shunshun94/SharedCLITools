@@ -1,0 +1,1 @@
+curl -X PUT -H "Authorization:Bot %0" -d "{}" https://discordapp.com/api/guilds/%1/bans/%2
