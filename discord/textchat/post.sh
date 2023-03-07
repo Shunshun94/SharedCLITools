@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -H "Authorization:Bot $1" -d "{\"content\":\"$3\"}" https://discordapp.com/api/channels/$2/messages
