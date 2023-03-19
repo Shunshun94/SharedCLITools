@@ -30,5 +30,4 @@ print "Content-Type: text/plain\n\n";
 
 print $response->content;
 exit;
-exit;
 
