@@ -1,0 +1,8 @@
+our $APPLICATION_PASSWORD = '';
+our $DISCORD_TOKEN = '';
+our $WORKING_URL = '';
+our $DISCORD_API_VERSION = '9';
+
+our $DISCORD_GUILD_ID = '';
+
+1;
