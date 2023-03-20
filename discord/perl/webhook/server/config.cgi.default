@@ -1,0 +1,4 @@
+our $APPLICATION_PASSWORD = '';
+our $DISCORD_WEBHOOK = '';
+
+1;
