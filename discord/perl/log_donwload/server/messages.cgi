@@ -19,7 +19,6 @@ if( $token ne $APPLICATION_PASSWORD ) {
 }
 
 my $channel = $cgi->url_param('channel');
-my $after = ($cgi->url_param('after')) ? $cgi->url_param('after') : 1;
 
 if( ! $channel ) {
   print "Status: 406 Not Acceptable\n";
@@ -30,9 +29,20 @@ if( ! $channel ) {
   exit;
 }
 
+my $limit = ($cgi->url_param('limit')) ? $cgi->url_param('limit') : 50;
+
+my $targetParam = "&after=1";
+if      ( $cgi->url_param('after') ) {
+  $targetParam = "&after=" . $cgi->url_param('after') ;
+} elsif ( $cgi->url_param('before') ) {
+  $targetParam = "&before=" . $cgi->url_param('before');
+} elsif ( $cgi->url_param('around')) {
+  $targetParam = "&around=" . $cgi->url_param('around');
+}
+
 my $browser = LWP::UserAgent->new;
 my $response = $browser->get(
-  "https://discordapp.com/api/channels/$channel/messages?limit=100&after=$after",
+  "https://discordapp.com/api/channels/$channel/messages?limit=$limit" . $targetParam,
   "Authorization" => "Bot $DISCORD_TOKEN",
   "User-Agent"=> "DiscordBot ($WORKING_URL, $DISCORD_API_VERSION)"
 );
